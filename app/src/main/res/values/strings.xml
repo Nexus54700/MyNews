@@ -4,7 +4,8 @@
     <string name="tab_text_2">Most popular</string>
     <string name="tab_text_3">Buisness</string>
     <string name="search_articles">Search Articles</string>
+    <string name="Notifications">Notifications</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

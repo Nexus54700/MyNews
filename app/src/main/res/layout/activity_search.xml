@@ -30,7 +30,7 @@
             android:gravity="top"
             android:ems="10"
             android:inputType="textPersonName"
-            android:hint="Search query item" />
+            android:hint="Search query term" />
         <Space
             android:layout_width="match_parent"
             android:layout_height="20dp" />
@@ -148,6 +148,18 @@
         android:layout_width="match_parent"
         android:layout_height="20dp" />
 
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="?android:attr/listDivider" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
+
     <Button
         android:id="@+id/button"
         android:layout_width="match_parent"
@@ -156,7 +168,16 @@
         android:backgroundTint="@color/colorPrimary"
         android:textColor="@color/white"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"/>
+        android:layout_marginRight="10dp"
+        android:visibility="visible"/>
+
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="Enable notifications (once per day)"
+        android:visibility="invisible" />
 
 
 </LinearLayout>

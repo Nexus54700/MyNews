@@ -65,8 +65,16 @@ public class MainActivity extends AppCompatActivity implements TheNewYorkTimesCa
                 Intent searchActivity = new Intent(MainActivity.this, SearchActivity.class);
                 startActivity(searchActivity);
                 return true;
+            case R.id.menu_notifs:
+                Intent notifsActivity = new Intent(MainActivity.this, notificationsActivity.class);
+                startActivity(notifsActivity);
+                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
+
+
+
         }
     }
 

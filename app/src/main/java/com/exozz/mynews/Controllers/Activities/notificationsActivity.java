@@ -11,7 +11,7 @@ import android.widget.Switch;
 
 import com.exozz.mynews.R;
 
-public class SearchActivity extends AppCompatActivity {
+public class notificationsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,16 +21,15 @@ public class SearchActivity extends AppCompatActivity {
         Switch swNotif = findViewById(R.id.switch1);
         Button buttonSearch = findViewById(R.id.button);
 
-        buttonSearch.setVisibility(View.VISIBLE);
-        swNotif.setVisibility(View.INVISIBLE);
-
+        buttonSearch.setVisibility(View.GONE);
+        swNotif.setVisibility(View.VISIBLE);
         this.configureToolbar();
     }
 
     private void configureToolbar(){
         //Get the toolbar (Serialise)
         Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle(R.string.search_articles);
+        toolbar.setTitle(R.string.Notifications);
         //Set the toolbar
         setSupportActionBar(toolbar);
         // Get a support ActionBar corresponding to this toolbar
