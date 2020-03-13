@@ -3,12 +3,16 @@ package com.exozz.mynews.Controllers.Activities;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.exozz.mynews.Controllers.Models.TopStories;
+import com.exozz.mynews.Controllers.utils.TheNewYorkTimesCalls;
+import com.exozz.mynews.Controllers.utils.TheNewYorkTimesService;
 import com.exozz.mynews.R;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,11 +20,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.exozz.mynews.ui.main.SectionsPagerAdapter;
 
-public class MainActivity extends AppCompatActivity {
+import java.text.BreakIterator;
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity implements TheNewYorkTimesCalls.Callbacks {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         tabs.setupWithViewPager(viewPager);
 
         this.configureToolbar();
+        this.executeHttpRequestWithRetrofit();
 
       /*   FloatingActionButton fab = findViewById(R.id.fab);
 
@@ -50,10 +61,6 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         //3 - Handle actions on menu items
         switch (item.getItemId()) {
-            case R.id.menu_activity_main_params:
-                Toast.makeText(this, "Il n'y a rien à paramétrer ici, passez votre chemin...", Toast.LENGTH_LONG).show();
-
-                return true;
             case R.id.menu_activity_main_search:
                 Intent searchActivity = new Intent(MainActivity.this, SearchActivity.class);
                 startActivity(searchActivity);
@@ -75,5 +82,42 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         // Sets the Toolbar
         setSupportActionBar(toolbar);
+    }
+
+    // 4 - Execute HTTP request and update UI
+    private void executeHttpRequestWithRetrofit(){
+        this.updateUIWhenStartingHTTPRequest();
+        TheNewYorkTimesCalls.fetchUserFollowing(this, "home");
+    }
+
+
+    @Override
+    public void onResponse(@Nullable List<TopStories> users) {
+        if (users != null) this.updateUIWithListOfUsers(users);
+
+    }
+
+    @Override
+    public void onFailure() {
+        this.updateUIWhenStopingHTTPRequest("An error happened !");
+
+    }
+
+    // 3 - Update UI showing only name of users
+    private void updateUIWithListOfUsers(List<TopStories> section){
+        StringBuilder stringBuilder = new StringBuilder();
+        for (TopStories user : section){
+            stringBuilder.append("-"+user.getSection()+"\n");
+        }
+        updateUIWhenStopingHTTPRequest(stringBuilder.toString());
+    }
+
+
+    private void updateUIWhenStartingHTTPRequest(){
+
+    }
+
+    private void updateUIWhenStopingHTTPRequest(String response){
+
     }
 }
