@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.exozz.mynews.R;
 
@@ -49,11 +50,12 @@ public class PlaceholderFragment extends Fragment {
             @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_main, container, false);
-        final TextView textView = root.findViewById(R.id.section_label);
+        final RecyclerView recyclerView = root.findViewById(R.id.recylerviewArticle);
         pageViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-                textView.setText(s);
+                //TODO
+                // add modification to integrate recylerView;
             }
         });
         return root;
