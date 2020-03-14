@@ -21,6 +21,10 @@ public class TopStories {
     @Expose
     private String section;
 
+    @SerializedName("caption")
+    @Expose
+    private String caption;
+
 
     public String getItemType() {
         return itemType;
@@ -28,6 +32,14 @@ public class TopStories {
 
     public void setItemType(String itemType) {
         this.itemType = itemType;
+    }
+
+    public String getCaption() {
+        return caption;
+    }
+
+    public void setCaption(String caption) {
+        this.itemType = caption;
     }
 
     public String getUrl() {

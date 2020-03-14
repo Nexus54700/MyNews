@@ -15,20 +15,11 @@ import com.exozz.mynews.R;
 public class MainFragment extends Fragment  {
 
     public MainFragment() {
-        // Required empty public constructor
-        executeHttpRequest();
+
     }
 
 
 
-
-    // ------------------
-    //  HTTP REQUEST
-    // ------------------
-
-    private void executeHttpRequest(){
-       // new NetworkAsyncTask(this).execute("https://api.nytimes.com/svc/topstories/v2/home.json?api-key=o6yIHhGmWFATwt9lma0sLPYGVC2LHzrG");
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
