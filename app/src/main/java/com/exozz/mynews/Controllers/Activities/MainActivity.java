@@ -4,12 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.exozz.mynews.Controllers.Models.TopStories;
-import com.exozz.mynews.Controllers.utils.TheNewYorkTimesCalls;
-import com.exozz.mynews.Controllers.utils.TheNewYorkTimesService;
 import com.exozz.mynews.R;
-import com.google.android.material.appbar.AppBarLayout;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
 import androidx.annotation.Nullable;
@@ -19,16 +14,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.exozz.mynews.ui.main.SectionsPagerAdapter;
 
-import java.text.BreakIterator;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements TheNewYorkTimesCalls.Callbacks {
+public class MainActivity extends AppCompatActivity  {
 
 
 
@@ -43,7 +34,6 @@ public class MainActivity extends AppCompatActivity implements TheNewYorkTimesCa
         tabs.setupWithViewPager(viewPager);
 
         this.configureToolbar();
-        this.executeHttpRequestWithRetrofit();
 
       /*   FloatingActionButton fab = findViewById(R.id.fab);
 
@@ -92,24 +82,10 @@ public class MainActivity extends AppCompatActivity implements TheNewYorkTimesCa
         setSupportActionBar(toolbar);
     }
 
-    // 4 - Execute HTTP request and update UI
-    private void executeHttpRequestWithRetrofit(){
-        this.updateUIWhenStartingHTTPRequest();
-        TheNewYorkTimesCalls.fetchUserFollowing(this, "home");
-    }
 
 
-    @Override
-    public void onResponse(@Nullable List<TopStories> users) {
-        if (users != null) this.updateUIWithListOfUsers(users);
 
-    }
 
-    @Override
-    public void onFailure() {
-        this.updateUIWhenStopingHTTPRequest("An error happened !");
-
-    }
 
     // 3 - Update UI showing only name of users
     private void updateUIWithListOfUsers(List<TopStories> section){

@@ -3,6 +3,7 @@ package com.exozz.mynews.Controllers.Models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+
 public class TopStories {
 
     @SerializedName("item_type")
