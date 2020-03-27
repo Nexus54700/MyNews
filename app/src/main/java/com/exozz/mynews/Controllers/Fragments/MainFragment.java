@@ -6,11 +6,12 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
+import com.exozz.mynews.Controllers.Models.Result;
 import com.exozz.mynews.Controllers.Models.TopStories;
 import com.exozz.mynews.Controllers.utils.TopStoriesStreams;
 import com.exozz.mynews.Controllers.views.TopStoriesAdapter;
@@ -33,7 +34,6 @@ public class MainFragment extends Fragment {
 
     //FOR DATA
     private Disposable disposable;
-    // 2 - Declare list of users (GithubUser) & Adapter
     private List<TopStories> topStories;
     private TopStoriesAdapter adapter;
 
@@ -70,20 +70,24 @@ public class MainFragment extends Fragment {
         this.recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
 
+
+
     // -------------------
     // HTTP (RxJAVA)
     // -------------------
 
     private void executeHttpRequestWithRetrofit(){
-        this.disposable = TopStoriesStreams.streamFetchUserFollowing("Home").subscribeWith(new DisposableObserver<List<TopStories>>() {
+        this.disposable = TopStoriesStreams.streamFetchUserFollowing("home").subscribeWith(new DisposableObserver<Result>() {
             @Override
-            public void onNext(List<TopStories> stories) {
+            public void onNext(Result stories) {
                 // 6 - Update RecyclerView after getting results from Github API
-                updateUI(stories);
+                updateUI(stories.getResults());
             }
 
             @Override
-            public void onError(Throwable e) { }
+            public void onError(Throwable e) {
+                Log.d("Axel", "onError: "+ e.getMessage());
+            }
 
             @Override
             public void onComplete() { }
@@ -101,6 +105,7 @@ public class MainFragment extends Fragment {
     private void updateUI(List<TopStories> stories){
         topStories.addAll(stories);
         adapter.notifyDataSetChanged();
+        Log.d("Axel", "updateUI: "+ stories.size());
     }
 }
 

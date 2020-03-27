@@ -24,7 +24,7 @@
 
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/textToSearch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="top"
@@ -68,7 +68,7 @@
 
 
             <EditText
-                android:id="@+id/editText5"
+                android:id="@+id/BeginDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -76,7 +76,7 @@
                 android:inputType="date" />
 
             <EditText
-                android:id="@+id/editText6"
+                android:id="@+id/EndDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -96,20 +96,20 @@
                 android:orientation="vertical">
 
                 <CheckBox
-                    android:id="@+id/checkBox7"
+                    android:id="@+id/checkBoxArts"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Arts"
                     android:textColorHighlight="#FFFFFF" />
 
                 <CheckBox
-                    android:id="@+id/checkBox8"
+                    android:id="@+id/checkBoxBuisness"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Buisness" />
 
                 <CheckBox
-                    android:id="@+id/checkBox9"
+                    android:id="@+id/checkBoxEntrepreneurs"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Entrepreneurs" />
@@ -121,19 +121,19 @@
                 android:orientation="vertical">
 
                 <CheckBox
-                    android:id="@+id/checkBox10"
+                    android:id="@+id/checkBoxPolitics"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Politics" />
 
                 <CheckBox
-                    android:id="@+id/checkBox11"
+                    android:id="@+id/checkBoxSports"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Sports" />
 
                 <CheckBox
-                    android:id="@+id/checkBox12"
+                    android:id="@+id/checkBoxTravel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Travel" />
@@ -177,7 +177,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:text="Enable notifications (once per day)"
-        android:visibility="invisible" />
+        android:visibility="gone" />
 
 
 </LinearLayout>

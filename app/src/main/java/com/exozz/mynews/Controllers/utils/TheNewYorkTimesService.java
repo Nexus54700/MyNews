@@ -1,5 +1,6 @@
 package com.exozz.mynews.Controllers.utils;
 
+import com.exozz.mynews.Controllers.Models.Result;
 import com.exozz.mynews.Controllers.Models.TopStories;
 
 import java.util.List;
@@ -13,12 +14,10 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 
 public interface TheNewYorkTimesService {
-    @GET("/{section}.json?api-key=o6yIHhGmWFATwt9lma0sLPYGVC2LHzrG")
-    static Observable<List<TopStories>> getFollowing(@Path("section") String section) {
-        return null;
-    }
+    @GET("{section}.json?api-key=o6yIHhGmWFATwt9lma0sLPYGVC2LHzrG")
+     Observable<Result> getFollowing(@Path("section") String section);
 
-    public static final Retrofit retrofit = new Retrofit.Builder()
+     Retrofit retrofit = new Retrofit.Builder()
             .baseUrl("https://api.nytimes.com/svc/topstories/v2/")
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
